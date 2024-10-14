@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function loadQuestion() {
+            // Get the question type from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const questionType = urlParams.get('type');
+
+            // Get the selected question from localStorage
+            const selectedQuestion = JSON.parse(localStorage.getItem('selectedQuestion'));
+
+            // Update the page title and heading based on the question type
+            const pageTitleMap = {
+                open: "Open Vraag",
+                meerkeuze: "Meerkeuze Vraag",
+                waarnietwaar: "Waar/Niet waar Vraag"
+            };
+
+            const title = pageTitleMap[questionType] || "Random Question";
+            document.title = title; // Update the browser tab title
+            document.getElementById('questionTypeTitle').textContent = title; // Update the heading
+
+            // Display the question
+            document.getElementById('question').textContent = selectedQuestion.question;
+
+            // Display the image if it exists
+            if (selectedQuestion.image) {
+                const imageElement = document.createElement('img');
+                imageElement.src = selectedQuestion.image;
+                imageElement.alt = "Related Image";
+                imageElement.style.width = "200px"; // Set width as needed
+                imageElement.style.display = "block";
+                imageElement.style.margin = "10px auto"; // Center the image
+                document.getElementById('imageContainer').appendChild(imageElement);
+            }
+
+            // Display options for multiple choice questions
+            if (questionType === 'meerkeuze' && selectedQuestion.options) {
+                const optionsContainer = document.getElementById('options');
+                selectedQuestion.options.forEach(option => {
+                    const optionElement = document.createElement('div');
+                    optionElement.textContent = option;
+                    optionsContainer.appendChild(optionElement);
+                });
+            }
+
+            // Display the answer
+            document.getElementById('answer').textContent = selectedQuestion.answer;
+
+            // Display the answer image if it exists
+            if (selectedQuestion.answerImage) {
+                const answerImageElement = document.createElement('img');
+                answerImageElement.src = selectedQuestion.answerImage;
+                answerImageElement.alt = "Answer Image";
+                answerImageElement.style.width = "200px"; // Set width as needed
+                answerImageElement.style.display = "none"; // Hide initially
+                answerImageElement.style.margin = "10px auto"; // Center the image
+                document.getElementById('answerImageContainer').appendChild(answerImageElement);
+            }
+
+            document.getElementById('answer').style.display = 'none'; // Hide answer initially
+        }
+
+        function revealAnswer() {
+            document.getElementById('answer').style.display = 'block';
+            const answerImage = document.querySelector('#answerImageContainer img');
+            if (answerImage) {
+                answerImage.style.display = 'block'; // Show the answer image when revealing the answer
+            }
+        }
+
+        function returnToHome() {
+            window.location.href = "index.html";
+        }
+
+        window.onload = loadQuestion;
+    </script>
+</head>
+
+<body>
+    <h1 id="questionTypeTitle">Random Question</h1>
+
+    <div id="question"></div>
+    <div id="imageContainer"></div> <!-- Container for the question image -->
+    <div id="options"></div> <!-- Container for multiple choice options -->
+    <div id="answer" style="display: none;"></div>
+    <div id="answerImageContainer"></div> <!-- Container for the answer image -->
+
+    <button onclick="revealAnswer()">Antwoord laten zien</button>
+    <button onclick="returnToHome()">Terug</button>
+</body>
+
+</html>
