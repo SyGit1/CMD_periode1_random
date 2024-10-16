@@ -1,14 +1,89 @@
 const questionSets = {
     open: [
         {
-            question: "Waar staat de ster in het midden van de Surinaamse vlag symbool voor?", answer: "De vijf punten van de ster staan voor de vijf continenten waaruit de bevolking van Suriname afkomstig is: Afrika, Europa, Azië, Noord-Amerika en Zuid-Amerika.",
-            image: "https://upload.wikimedia.org/wikipedia/commons/6/60/Flag_of_Suriname.svg",
-
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code1.png",
+            answer: "De Surinaamse cultuur"
         },
-        { question: "Welke kleuren zitten er in de Marokkaanse vlag?", answer: "Rood en groen." },
-        { question: "Benoem twee prominente voetbalclubs in Rotterdam?", answer: "Bijvoorbeeld Feyenoord, Sparta, Excelsior" },
-        { question: "Waar in Rotterdam kun je voedsel vinden uit allerlei verschillende culturen?", answer: "De Markthal" },
-        { question: "Wat zijn de kleuren van de Rotterdamse vlag?", answer: "Groen en wit" }
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code2.png",
+            answer: "De Surinaamse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code3.png",
+            answer: "De Surinaamse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code4.png",
+            answer: "De Surinaamse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code5.png",
+            answer: "De Marokkaanse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code6.png",
+            answer: "De Marokkaanse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code7.png",
+            answer: "De Marokkaanse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code8.png",
+            answer: "De Marokkaanse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code9.png",
+            answer: "De Nederlandse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code10.png",
+            answer: "De Nederlandse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code11.png",
+            answer: "De Nederlandse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code12.png",
+            answer: "De Nederlandse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code13.png",
+            answer: "De Turkse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code14.png",
+            answer: "De Turkse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code15.png",
+            answer: "De Turkse cultuur"
+        }
+        // {
+        //     question: "Waar staat de ster in het midden van de Surinaamse vlag symbool voor?", answer: "De vijf punten van de ster staan voor de vijf continenten waaruit de bevolking van Suriname afkomstig is: Afrika, Europa, Azië, Noord-Amerika en Zuid-Amerika.",
+        //     image: "https://upload.wikimedia.org/wikipedia/commons/6/60/Flag_of_Suriname.svg",
+
+        // },
+        // { question: "Welke kleuren zitten er in de Marokkaanse vlag?", answer: "Rood en groen." },
+        // { question: "Benoem twee prominente voetbalclubs in Rotterdam?", answer: "Bijvoorbeeld Feyenoord, Sparta, Excelsior" },
+        // { question: "Waar in Rotterdam kun je voedsel vinden uit allerlei verschillende culturen?", answer: "De Markthal" },
+        // { question: "Wat zijn de kleuren van de Rotterdamse vlag?", answer: "Groen en wit" }
     ],
     meerkeuze: [
         {
@@ -69,7 +144,7 @@ const questionSets = {
         {
             question: "Wanneer werden de Nederlandse Antillen opgeheven? ",
             options: ["A)  4 december 2005", "B) 10 oktober 2010", "C) 1 september 2009"],
-            answer: "Het antwoord staat niet in de docs dus geen idee!!!"
+            answer: "B) 10 oktober 2010"
         },
         {
             question: "Welke drie culturen hebben een sterke invloed gehad op de Antilliaanse cultuur? ",
