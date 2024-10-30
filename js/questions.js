@@ -74,6 +74,21 @@ const questionSets = {
             question: "Bij welke cultuur hoort dit nummer?",
             image: "images/code15.png",
             answer: "De Turkse cultuur"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code16.png",
+            answer: "De voormalige Nederlandse Antillen"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code17.png",
+            answer: "De voormalige Nederlandse Antillen"
+        },
+        {
+            question: "Bij welke cultuur hoort dit nummer?",
+            image: "images/code18.png",
+            answer: "De voormalige Nederlandse Antillen"
         }
         // {
         //     question: "Waar staat de ster in het midden van de Surinaamse vlag symbool voor?", answer: "De vijf punten van de ster staan voor de vijf continenten waaruit de bevolking van Suriname afkomstig is: Afrika, Europa, Azië, Noord-Amerika en Zuid-Amerika.",
@@ -92,7 +107,7 @@ const questionSets = {
             answer: "C) Srefidensi"
         },
         {
-            question: "WWat eten veel Marokkaanse families in Rotterdam tijdens speciale gelegenheden?",
+            question: "Wat eten veel Marokkaanse families in Rotterdam tijdens speciale gelegenheden?",
             options: ["A) Sushi", "B) Couscous", "C) Pizza", "D) Tacos"],
             answer: "B) Couscous"
         },
@@ -133,7 +148,7 @@ const questionSets = {
         },
         {
             question: "Wat is de meest voorkomende religie op de voormalige Nederlandse Antillen? ",
-            options: ["A) Protestants", "B) Katholiek", "C) Moslim", "D) Niet gelovig"],
+            options: ["A) Protestants", "B) Katholiek", "C) Islam", "D) Niet gelovig"],
             answer: "B) Katholiek"
         },
         {
@@ -165,7 +180,7 @@ const questionSets = {
             question: "Volgens het islamitisch geloof draagt men amuletten als bestrijding tegen magie. Wat is de naam van dit Amulet?: ",
             options: ["A) Het blauwe oog", "B) Het boze oog", "C) Het Turkse oog"],
             answer: "B) Het boze oog, ook wel in het Turks ‘Nazar’ genoemd, is gebaseerd op het idee dat een persoon bij iemand schade kan aanrichten, vaak door jaloezie. Het dragen van het amulet zal je hiervoor beschermen. ",
-            answerImage: "https://cdn.shopify.com/s/files/1/0266/2688/3633/files/ojo-turco-significado_480x480.png?v=1676622245"
+            image: "https://cdn.shopify.com/s/files/1/0266/2688/3633/files/ojo-turco-significado_480x480.png?v=1676622245"
         }
     ],
     waarnietwaar: [
@@ -189,12 +204,33 @@ function randomizeQuestion(type) {
 
     if (questionSets[type]) {
         const questions = questionSets[type];
-        selectedQuestion = questions[Math.floor(Math.random() * questions.length)];
+        let previousQuestion = localStorage.getItem('previousQuestion');
+
+        if (previousQuestion) {
+            previousQuestion = JSON.parse(previousQuestion);
+        }
+
+        // If there's only one question, no need to randomize.
+        if (questions.length === 1) {
+            selectedQuestion = questions[0];
+        } else {
+            let attemptCount = 0;
+            const maxAttempts = 10; // To avoid infinite loops
+
+            // Keep randomizing until a different question is selected, or until max attempts are reached
+            do {
+                selectedQuestion = questions[Math.floor(Math.random() * questions.length)];
+                attemptCount++;
+            } while (previousQuestion && selectedQuestion.question === previousQuestion.question && attemptCount < maxAttempts);
+        }
     }
 
-    // Save selected question to localStorage
+    // Save selected question and current question as the previous one
     localStorage.setItem('selectedQuestion', JSON.stringify(selectedQuestion));
+    localStorage.setItem('previousQuestion', JSON.stringify(selectedQuestion));
 
     // Redirect to the question page, passing the type as a URL parameter
     window.location.href = `question.html?type=${type}`;
 }
+
+
